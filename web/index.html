@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+  <meta charset="utf-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/@blindnet/prci@0.12.3/dist/index.all.min.js" type="module"></script>
+
+  <title>web</title>
+
+  <style>
+    body {
+      background: #fafafa;
+    }
+
+    .disabled {
+      background-color: white;
+      filter: alpha(opacity=50);
+      opacity: 0.5;
+      -moz-opacity: 0.50;
+      z-index: 20;
+      pointer-events: none;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="mb-3">
+      <label for="email-field" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email-field">
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="asd" onclick="submit()">Submit</button>
+
+    <div id="devkit_request_wrapper" class="disabled">
+      <bldn-priv-request id="devkit"></bldn-priv-request>
+    </div>
+
+  </div>
+  <script>
+    function submit() {
+      const email = document.getElementById("email-field").value
+
+      fetch(`http://localhost:3000/token/user/${email}`)
+        .then(resp => resp.json())
+        .then(resp => {
+          document.getElementById('devkit').setAttribute('api-token', `${resp.token}`)
+          document.getElementById('devkit_request_wrapper').classList.remove("disabled")
+        })
+    }
+  </script>
+</body>
+
+</html>

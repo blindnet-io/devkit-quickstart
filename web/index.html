@@ -47,9 +47,9 @@
       const email = document.getElementById("email-field").value
 
       fetch(`http://localhost:3000/token/user/${email}`)
-        .then(resp => resp.json())
-        .then(resp => {
-          document.getElementById('devkit').setAttribute('api-token', `${resp.token}`)
+        .then(resp => resp.text())
+        .then(token => {
+          document.getElementById('devkit').setAttribute('api-token', `${token}`)
           document.getElementById('devkit_request_wrapper').classList.remove("disabled")
         })
     }

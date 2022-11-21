@@ -1,6 +1,5 @@
 package io.blindnet.quickstart;
 
-import com.fasterxml.jackson.databind.node.TextNode;
 import io.blindnet.jwt.TokenBuilder;
 import io.blindnet.jwt.TokenPrivateKey;
 import io.javalin.Javalin;

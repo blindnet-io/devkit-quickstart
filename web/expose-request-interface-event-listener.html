@@ -22,14 +22,18 @@
     <bldn-priv-request id="devkit"></bldn-priv-request>
     <script>
       /**
-       * Do something with a request object emitted by the PRCI
+       * Log the request within the event emitted by the PRCI
        * @param e {CustomEvent}
        */
       function catchRequest(e) {
+        
+        // Stop the request from bubbling further
+        e.stopPropagation()
 
+        // Extract the request object
         const { request } = e.detail
 
-        // Now we can use the request object ...
+        // Log the request
         console.log(request)
       }
 

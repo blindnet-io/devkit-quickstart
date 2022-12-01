@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@blindnet/privacy-portal@latest/dist/index.all.min.js" type="module"></script>
+    <title>Privacy Request Portal</title>
+    <style>
+      body {
+        background: #fafafa;
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 3vh;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Privacy Request Portal</h1>
+    <bldn-privacy-portal id="devkit"></bldn-privacy-portal>
+    <script>
+      /**
+       * Log the request within the event emitted by the Privacy Portal
+       * @param e {CustomEvent}
+       */
+      function catchRequest(e) {
+        
+        // Stop the request from bubbling further
+        e.stopPropagation()
+
+        // Extract the request object
+        const { request } = e.detail
+
+        // Log the request
+        console.log(request)
+      }
+
+      // Add listener to the Privacy Portal element
+      const email = document.getElementById("devkit").addEventListener("bldn-request-builder:request-created", catchRequest)
+    </script>
+  </body>
+</html>

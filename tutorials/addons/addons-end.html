@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@blindnet/privacy-portal@0.15.1-pr254-24df016.0/dist/index.all.min.js" type="module"></script>
+    <title>Privacy Request Portal</title>
+    <style>
+      body {
+        background: #fafafa;
+        text-align: center;
+      }
+
+      bldn-privacy-portal {
+        margin: 3vh auto;
+        max-width: 950px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Privacy Request Portal</h1>
+    <bldn-privacy-portal id="devkit">
+
+      <!-- Addon wrapper element -->
+      <bldn-request-addon id="id-addon" slot="postFormModule">
+        
+        <!-- Must load bootstrap and apply styles within shadow DOM -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <style>
+          #id-addon-container {
+            max-width: 400px;
+            padding: 2em;
+            margin: 2em auto 1em auto;
+            border: 2px dashed #979797;
+            border-radius: 10px;
+            color: #1F1F1F;
+            font-size: 1em;
+          }
+
+          .mb-3 {
+            margin: 0em auto!important;
+            max-width: 75%;
+          }
+
+          h2 {
+            font-size: 1.25em;
+            margin-bottom: 2em;
+          }
+
+          p {
+            margin-bottom: 2.75em;
+          }
+
+        </style>
+
+        <!-- Define a template for our addon -->
+        <div id="id-addon-container">
+          <h2>ID Document Upload</h2>
+          <p>Please upload a copy of your valid identity document.</p>
+          <div class="mb-3">
+            <input class="form-control" type="file" id="id-file">
+          </div>
+        </div>
+
+      </bldn-request-addon>
+    </bldn-privacy-portal>
+    <script>
+      /**
+       * Verify that a file was uploaded
+       */
+      function verifyFileInput() {
+
+        // Get the input element
+        const fileInput = this.querySelector("#id-file")
+        
+        // Check if a file was added, returning a custom error message if not
+        return (fileInput && fileInput.value !== "") ? true : "You must upload an ID document!"
+      }
+    
+      // Add listener to the Privacy Portal element
+      document.getElementById("id-addon").onSubmit = verifyFileInput
+    </script>
+  </body>
+</html>

@@ -11,8 +11,8 @@ public class Main {
 
     int port = 3000;
 
-    String appId = "78f5fc15-5645-4f4f-8e1d-0792b7d89acd";
-    String key = "EgPThokIzi0oGkOGPOuC3zA63/b39ZAefcbxpegoHog=";
+    String appId = "<YOUR_APPLICATION_ID>";
+    String key = "<YOUR_APPLICATION_KEY>";
 
     TokenBuilder tokenBuilder = new TokenBuilder(appId, TokenPrivateKey.fromString(key));
 

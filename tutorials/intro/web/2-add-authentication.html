@@ -27,12 +27,13 @@
   <div class="container text-center">
     <h1>Privacy Request Portal</h1>
     <div class="col input-group mb-3" style="padding: 3vh 25%;">
-      <input id="email-field" type="text" class="form-control" placeholder="Email Address" aria-label="Email Address" aria-describedby="button-addon2">
+      <input id="email-field" type="text" class="form-control" placeholder="Email Address" aria-label="Email Address"
+        aria-describedby="button-addon2">
       <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="submit()">Submit</button>
     </div>
 
     <div id="devkit_request_wrapper" class="disabled">
-      <bldn-priv-request id="devkit" actions='["revoke-consent","transparency", "transparency.dpo", "transparency.known", "other"]'></bldn-priv-request>
+      <bldn-priv-request id="devkit"></bldn-priv-request>
     </div>
 
   </div>
@@ -43,7 +44,7 @@
       fetch(`http://localhost:3000/token/user/${email}`)
         .then(resp => resp.text())
         .then(token => {
-          document.getElementById('devkit').setAttribute('api-token', `${token}`)
+          document.getElementById('devkit').setAttribute('api-token', token)
           document.getElementById('devkit_request_wrapper').classList.remove("disabled")
         })
     }

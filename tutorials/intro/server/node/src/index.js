@@ -8,8 +8,8 @@ app.use(cors())
 
 const port = 3000
 
-const appId = '78f5fc15-5645-4f4f-8e1d-0792b7d89acd'
-const key = 'EgPThokIzi0oGkOGPOuC3zA63/b39ZAefcbxpegoHog='
+const appId = '<YOUR_APPLICATION_ID>'
+const key = '<YOUR_APPLICATION_KEY>'
 
 const tokenBuilder = TokenBuilder.init(appId, key)
 

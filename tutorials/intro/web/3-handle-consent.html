@@ -33,9 +33,7 @@
     </div>
 
     <div id="devkit_request_wrapper" class="disabled">
-      <bldn-priv-request id="devkit"
-        actions='["revoke-consent","transparency", "transparency.dpo", "transparency.known", "other"]'>
-      </bldn-priv-request>
+      <bldn-priv-request id="devkit"></bldn-priv-request>
     </div>
 
   </div>
@@ -46,7 +44,7 @@
       fetch(`http://localhost:3000/token/user/${email}`)
         .then(resp => resp.text())
         .then(token => {
-          document.getElementById('devkit').setAttribute('api-token', `${token}`)
+          document.getElementById('devkit').setAttribute('api-token', token)
           document.getElementById('devkit_request_wrapper').classList.remove("disabled")
 
           return fetch('https://stage.computing.blindnet.io/v0/user-events/consent', {
